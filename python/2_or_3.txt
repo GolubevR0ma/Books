@@ -1,0 +1,267 @@
+
+         Should I use Python 2 or Python 3 for my development activity?
+
+What are the differences?
+
+   Short version: Python 2.x is the status quo, Python 3.x is the present and
+   future of the language
+
+   At the time of writing (July 4, 2010), the final 2.7 release is out, with
+   a statement of extended support for this end-of-life release. The 2.x
+   branch will see no new major releases after that. 3.x is under active
+   development and has already seen stable releases, such as the recent 3.2.
+   This means that all recent standard library improvements, for example, are
+   only available in Python 3.x.
+
+   Guido van Rossum (the original creator of the Python language) decided to
+   clean up Python 2.x properly, with less regard for backwards compatibility
+   than is the case for new releases in the 2.x range. The most drastic
+   improvement is the better Unicode support (with all text strings being
+   Unicode by default) as well as saner bytes/Unicode separation.
+
+   Besides, several aspects of the core language (such as print and exec
+   being statements, integers using floor division) have been adjusted to be
+   easier for newcomers to learn and to be more consistent with the rest of
+   the language, and old cruft has been removed (for example, all classes are
+   now new-style, "range()" returns a memory efficient iterable, not a list
+   as in 2.x).
+
+   The What's New in Python 3.0 document provides a good overview of the
+   major language changes and likely sources of incompatibility with existing
+   Python 2.x code.
+
+   However, the broader Python ecosystem has amassed a significant amount of
+   quality software over the years. The downside of breaking backwards
+   compatibility in 3.x is that much of that software doesn't work on 3.x
+   yet.
+
+Which version should I use?
+
+   Which version you ought to use is mostly dependent on what you want to get
+   done.
+
+   If you can do exactly what you want with Python 3.x, great! There's a few
+   downsides, such as comparatively limited library support and the fact that
+   most current Linux distributions and Macs are still using 2.x as default,
+   but as a language Python 3.x is definitely ready. As long as actually
+   getting Python 3.x on your user's computers (which ought to be easy, since
+   many people reading this may only be developing something for themselves
+   or an environment they control) and you're writing things where lack of
+   third-party software isn't a major impediment (or where you know the
+   packages you need already support Python 3), Python 3.x is an excellent
+   choice. Also, several distributions have Python 3.x already installed or
+   available for end-users.
+
+   However, there are some key issues that may require you to use Python 2
+   rather than Python 3.
+
+   Firstly, if you're deploying to an environment you don't control, that may
+   impose a specific version, rather than allowing you a free selection from
+   the available versions.
+
+   Secondly, if you want to use a specific third party package or utility
+   that doesn't yet have a released version that is compatible with Python 3,
+   and porting that package is a non-trivial task, you may choose to use
+   Python 2 in order to retain access to that package.
+
+   Popular modules that don't yet support Python 3 include Twisted (for
+   networking and other applications), gevent (like Twisted, but different),
+   Django (for building Web sites), and PIL (for processing images).
+
+   Most of these libraries have people working on 3.x support and it's mostly
+   a work in progress in various stages of completion. For some libraries,
+   it's more of a priority than others: Twisted, for example, is mostly
+   focused on production servers, where supporting older versions of Python
+   is important, let alone supporting a new version that includes major
+   changes to the language. (Twisted is a prime example of a major package
+   where porting to 3.x is far from trivial.)
+
+   For creating GUI applications Python 3 already comes with Tkinter, and has
+   been supported by PyQt4 almost from the day Python 3 was released; PySide
+   added Python 3 support in 2011. GTK+ GUIs can be created with PyGObject
+   which supports Python 3 and is the successor to PyGtk.
+
+   Many other major packages have been ported to Python 3, including numpy
+   (for number crunching), CherryPy and Pyramid (for Web sites) and cx_Freeze
+   (for packaging applications with their dependencies).
+
+   Other major modules have now been ported. Some notable which were
+   previously listed on this page as incompatible, have recently been ported
+   to Python 3 are:
+
+     * Pylons' Pyramid now supports Python, including the latest version 3.2.
+     * py2exe (for packaging your application for Windows users)
+
+   If you want to use Python 3.x, but you're afraid to because of a
+   dependency, it's probably worthwhile doing some research first. This is a
+   work in progress and this wiki page might be outdated.
+
+   Even if the official python documentation and the tutorial have been
+   updated for Python 3, there is still a lot of documentation (including
+   examples) on the Web and in reference books that still use Python 2. This
+   can require some adjustment to make things work with Python 3 instead.
+
+   It is worth noting that if you wish to use an alternative implementation
+   of Python such as IronPython, Jython or PyPy (or one of the longer list of
+   Python platform or compiler implementations), Python 3 support is still
+   relatively rare. This may affect you if you are interested in choosing
+   such an implementation for reasons of integration with other systems or
+   for performance.
+
+   See the Python 3 Porting Status page for information about which libraries
+   have been, or are in the process of being, ported to Python 3.
+
+But wouldn't I want to avoid 2.x? It's an old language with many mistakes, and
+it took a major version to get them out.
+
+   Well, not entirely. Some of the less disruptive improvements in 3.0 and
+   3.1 have been backported to 2.6 and 2.7, respectively. For more details on
+   the backported features, see What's New in Python 2.6 and What's New in
+   Python 2.7.
+
+   A non-exhaustive list of features which are only available in 3.x releases
+   and won't be backported to the 2.x series:
+
+     * strings are Unicode by default
+     * clean Unicode/bytes separation
+     * exception chaining
+     * function annotations
+     * syntax for keyword-only arguments
+     * extended tuple unpacking
+     * non-local variable declarations
+
+   Also, language evolution is not limited to core syntactic or semantic
+   changes. It also regards the standard library, where many improvements are
+   done in 3.x that will not be backported to Python 2. See What's New in
+   Python 3.2, for example.
+
+   That said, well-written 2.x code can be a lot like 3.x code. That can mean
+   many things, including using new-style classes, not using ancient
+   deprecated arcane incantations of print, using lazy iterators where
+   available, etc. A practical example: good 2.x code will typically use
+   xrange instead of range; xrange was the starting point for the Python 3.x
+   range implementation (although range is even better in Python 3, since it
+   can handle values larger than sys.maxint).
+
+   Above all, it is recommended that you focus on writing good code so that
+   2.x vs 3.x becomes less of an issue. That includes writing full unit test
+   suites, and getting Unicode right. (Python 3.x is significantly less
+   forgiving than 2.x about Unicode versus bytes issues: This is considered
+   to be a good thing, though it makes porting some software packages fairly
+   annoying.)
+
+I want to use Python 3, but there's this tiny library I want to use that's
+Python 2.x only. Do I really have to revert to using Python 2 or give up on
+using that library?
+
+   Assuming you can't find an alternative package that already supports
+   Python 3, you still have a few options to consider:
+
+     * Port the library to 3.x. ("Porting" means that you make the library
+       work on 3.x.)
+     * It is possible that the library isn't really needed and you can use
+       another one.
+     * If that turns out to be really hard, and all your other dependencies
+       do exist in 2.x, consider starting off in 2.x. As has already been
+       explained in other places, good 2.x code will typically make switching
+       painless as soon as every dependency has been successfully ported.
+     * Decide if the feature is really that important. Maybe you could drop
+       it?
+
+   The ideal situation is that you try to port the library to 3.x. Often
+   you'll find someone is already working on this. Even when that's not the
+   case, existing project members will usually appreciate the help,
+   especially as porting often finds bugs in the original software, improving
+   the quality of both the original and the 3.x port. Porting isn't always
+   easy, but it's usually easier than writing your own thing from scratch.
+
+   How you're supposed to do porting is explained in PEP 3000. The basic idea
+   is to take the 2.x version of the library and use the automated 2to3
+   converter to create a Python 3 compatible version and check that all the
+   unit tests still pass. If tests fail, modify the original 2.x sources and
+   try again. This approach makes it feasible to support 2.x and 3.x in
+   parallel from a single 2.x code base. This is much easier than trying to
+   maintain separate 2.x and 3.x branches in parallel (just ask the core
+   Python developers about that one - they've been stuck with doing that for
+   a couple of years now!).
+
+   The porting situation is more complicated if there are C extension modules
+   involved, but even then it is still likely to be easier than inventing
+   your own equivalent package.
+
+   There are also some more in depth guides right here on the wiki:
+   PortingPythonToPy3k, PortingExtensionModulesToPy3k
+
+I decided to write something in 3.x but now someone wants to use it who only has
+2.x. What do I do?
+
+   In addition to the 2to3 tool that allows 3.x code to be generated from 2.x
+   source code, there's also the 3to2 tool, which aims to convert 3.x code
+   back to 2.x code. In theory, this should work even better than going the
+   other direction, since 3.x doesn't have as many nasty corner cases for the
+   converter to handle (getting rid of as many of those as possible was one
+   of the main reasons for breaking backward compatibility after all!).
+   However, code which makes heavy use of 3.x only features (such as function
+   annotations or extended tuple unpacking) is unlikely to be converted
+   successfully.
+
+   It's probably also fair to say that 3to2 is the road less traveled
+   compared to 2to3 at this stage, so you might come across a few rough edges
+   here and there. However, if you want to write 3.x code, it's definitely an
+   idea worth exploring.
+
+   six is another tool.
+
+Other resources that may help make the choice between Python 2 and Python 3
+
+     * Community Web site to promote Python 3
+     * Advice from the #python crew (the original inspiration for the
+       contents of this page): http://python-commandments.org/python3.html
+     * Nick Efford has some specific comments in relation to teaching
+       programming with Python 3:
+       http://www.comp.leeds.ac.uk/nde/papers/teachpy3.html
+     * Mark Pilgrim has written a Python 3 focused version of "Dive Into
+       Python": http://diveintopython3.org/whats-new.html
+     * Swaroop C H has updated "A Byte of Python" to use Python 3, while
+       keeping the last Python 2 based version available:
+       http://www.swaroopch.com/notes/Python
+     * "What an IronPython user should know about Python 3":
+       http://www.itworld.com/development/104506/python-3-and-ironpython
+     * PyCon Ireland 2010 included a talk by Paul Barry entitled "Head First
+       into Python 3" and is available here:
+       http://vimeo.com/groups/pyconireland/videos/14354395 - Paul has a
+       follow-up talk from PyCon Ireland 2011 entitled "What's the scoop with
+       Python 3?" where he talks more about the (lack of) Python 3 adoption
+       within the community, available here:
+       http://vimeo.com/groups/pyconireland/videos/31071871
+     * Mark Summerfield has written a 4 page PDF summarizing the differences
+       between Python 2 and 3: Moving from Python 2 to Python 3
+     * Wesley Chun has written a couple of Python 3 articles: Python 3: the
+       Evolution of a Programming Language (Mar 2009) and Python's "New"
+       Division: Python 2 Versus Python 3 (Jan 2010)
+     * Wesley Chun's Python 3: the Next Generation talk & slides (PyCon, Feb
+       2010)
+     * James Bennett wrote an interesting article discussing why Python 3.0
+       exists at all
+     * how to get Unicode versus bytes semantics in 2.x similar to the ones
+       in 3.x (preventing implicit encoding and decoding, while keeping
+       useful features, such as str.split/bytes.split
+
+Footnotes
+
+   Python2orPython3 (последним исправлял пользователь ÉricAraujo 2012-05-07
+   18:25:17)
+
+     * MoinMoin Powered
+     * Python Powered
+     * GPL licensed
+     * Valid HTML 4.01
+
+     * Page.execute = 0.013s
+     * getACL = 0.000s
+     * init = 0.001s
+     * load_multi_cfg = 0.000s
+     * run = 0.056s
+     * send_page = 0.052s
+     * send_page_content = 0.014s
+     * total = 0.056s
