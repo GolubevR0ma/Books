@@ -1,0 +1,13 @@
+# coding: utf-8
+import codecs
+f = codecs.open(test.fb2, 'r', 'cp1251')
+f = codecs.open('test.fb2', 'r', 'cp1251')
+f.read
+f.read()
+f = codecs.open('test.fb2', 'r', 'cp1251')
+print f
+f
+u = f.read()
+out = codecs.open('out.tex', 'w', 'utf-8')
+out.write(u)
+!vim out.tex
