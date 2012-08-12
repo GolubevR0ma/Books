@@ -1,0 +1,73 @@
+\documentclass[a6paper,14pt]{extarticle}
+
+%\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\usepackage[T2A]{fontenc}
+% шрифт как в ссср
+% заработал после http://kalina.lug.ru/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%82%D0%B0_%D1%88%D1%80%D0%B8%D1%84%D1%82%D0%BE%D0%B2_PSCyr_%D0%BD%D0%B0_TeXLive_%D0%B2_Ubuntu_9.04
+\usepackage{pscyr}
+\usepackage[utf8]{inputenc}
+\usepackage[english=nohyphenation,russian=nohyphenation]{hyphsubst}
+\usepackage[english,russian]{babel}
+% Для поиска по русским буквам
+\usepackage{cmap}
+\usepackage{indentfirst}        % Отступ в первом абзаце.
+
+\usepackage{geometry} %способ ручной установки полей
+\geometry{top=0.5cm} %поле сверху
+\geometry{bottom=1.25cm} %поле снизу
+\geometry{left=0.2cm} %поле справа
+\geometry{right=0.2cm} %поле слева
+
+\linespread{0.95}
+
+\usepackage{wrapfig}
+
+
+\ifx\pdfoutput\undefined
+\usepackage{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\fi
+
+\usepackage{textcomp}
+
+
+\renewcommand{\bfdefault}{b}
+%\righthyphenmin=4 % Минимальное число символов при переносе - 2.
+%\righthyphenmin=30 % Минимальное число символов при переносе - 2.
+
+
+% LaTeX Paragraph Indenting
+%\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+\usepackage{parallel}
+
+% позволяет задавать цвет текста и фона,
+% как отдельного блока, так и всего
+% документа
+\usepackage[usenames,table]{xcolor}
+
+% --------------------------------------
+\newenvironment{answer}{%
+   \bfseries
+   \color{blue}
+}{}
+% --------------------------------------
+%\setlength{\parindent}{0pt}
+
+%\maketitle
+% Нумерация страниц выключена
+\pagestyle{empty}
+
+\sloppy
+
+% Буквица
+\usepackage{type1cm}
+\usepackage{lettrine}
+
+% Создание гиперссылок. Пакет загружен последним,
+% так как он переопределяет многие команды LaTeX.
+\usepackage{hyperref}
+
+% vim: fdm=syntax
